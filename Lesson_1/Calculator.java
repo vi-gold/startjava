@@ -6,7 +6,7 @@
         double b = 2;
         char sign = '^';
         double result = 1;
-        if (sign == '/' && b == 0){
+        if (sign == '/' && b == 0) {
             System.out.println("На 0 делить нельзя");
         } else {
            if (sign == '+') {
@@ -21,9 +21,10 @@
                }
            } else if (sign == '%') {
                result = a % b;
+           } else {
+               System.out.println("Такой операции не предусмотренно");
            }
            System.out.println(a + " " + sign + " " + b + " = " + result);
         }
-
     }
 }

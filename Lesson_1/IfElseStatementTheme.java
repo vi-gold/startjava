@@ -1,7 +1,7 @@
 public class IfElseStatementTheme {
 
     public static void main(String[] args) {
-        System.out.println("\n1. Перевод псевдокода на язык Java");
+        System.out.println("1. Перевод псевдокода на язык Java");
         int age = 20;
         boolean male = true;
         double height = 1.9;
@@ -30,7 +30,8 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n2. Поиск max и min числа");
-        int a = 35, b = 46;
+        int a = 35;
+        int b = 46;
         if (a == b) {
             System.out.println("Число " + a + " равно числу " + b);
         } else if (a > b) {
@@ -88,24 +89,21 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int contribution = 300_000;
-        int percent;
+        int percent = 0;
         System.out.println("Сумма вклада: " + contribution);
         if (contribution < 100_000) {
             percent = contribution / 100 * 5;
-            System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: " 
-                + (contribution + percent));
         } else if (contribution >= 100_000 && contribution <= 300_000) {
             percent = contribution / 100 * 7;
-            System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: " 
-                + (contribution + percent));
         } else if (contribution > 300_000) {
             percent = contribution / 100 * 10;
-            System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: " 
-                + (contribution + percent));
         }
+        System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: " 
+                + (contribution + percent));
 
         System.out.println("\n7. Определение оценки по предметам");
-        int history = 59, programming = 91;
+        int history = 59;
+        int programming = 91;
         int avgPercent = (history + programming) / 2;
         int gradeHistory = 0, gradeProgramming = 0;
         if (history <= 60) {
@@ -126,12 +124,14 @@ public class IfElseStatementTheme {
         } else if (programming > 91) {
             gradeProgramming = 5;
         }
-        System.out.println("История\t" + gradeHistory + "\nПрограммирование\t" + gradeProgramming
+        System.out.println("История " + gradeHistory + "\nПрограммирование " + gradeProgramming
             + "\nСредний балл оценок: " + ((gradeProgramming + gradeHistory) / 2)
             + "\nСредний % по предметам: " + avgPercent);
 
         System.out.println("\n8. Расчет прибыли за год");
-        int rentForYear = 5000 * 12, salesForYear = 13_000 * 12, costPriceForYear = 9000 * 12;
+        int rentForYear = 5000 * 12;
+        int salesForYear = 13_000 * 12;
+        int costPriceForYear = 9000 * 12;
         int profit = salesForYear - rentForYear - costPriceForYear;
         if (profit > 0){
             System.out.println("Прибыль за год: +" + profit);
@@ -141,69 +141,71 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int sum = 567;
-        int hundredsOfSum = sum / 100 * 100;
-        int dozensOfSum = sum / 10 % 10 * 10;
-        int unitsOfSum = sum % 10;
-        int countHundredsInBank = 10, countDozensInBank = 5, countUnitsInBank = 50;
-        int temp = 0;
-        if (hundredsOfSum <= countHundredsInBank * 100) {
-            System.out.println("Выдача " + hundredsOfSum / 100 
-                + " банкнот номиналом 100 на сумму " + hundredsOfSum);
-            if (dozensOfSum <= countDozensInBank) {
-                System.out.println("Выдача " + dozensOfSum / 10 
-                    + " банкнот номиналом 10 на сумму " + dozensOfSum);
-                if (unitsOfSum <= countUnitsInBank) {
-                    System.out.println("Выдача " + unitsOfSum 
-                        + " банкнот номиналом 1 на сумму " + unitsOfSum
-                        + "\nОбщая сумма выдачи: " + (hundredsOfSum + dozensOfSum + unitsOfSum));
+        int hundredsSum = sum / 100 * 100;
+        int tensSum = sum / 10 % 10 * 10;
+        int onesSum = sum % 10;
+        int countHundredsInBank = 10;
+        int countDozensInBank = 5;
+        int countUnitsInBank = 50;
+        int temp;
+        if (hundredsSum <= countHundredsInBank * 100) {
+            System.out.println("Выдача " + hundredsSum / 100
+                    + " банкнот номиналом 100 на сумму " + hundredsSum);
+            if (tensSum <= countDozensInBank) {
+                System.out.println("Выдача " + tensSum / 10
+                        + " банкнот номиналом 10 на сумму " + tensSum);
+                if (onesSum <= countUnitsInBank) {
+                    System.out.println("Выдача " + onesSum
+                        + " банкнот номиналом 1 на сумму " + onesSum
+                        + "\nОбщая сумма выдачи: " + (hundredsSum + tensSum + onesSum));
                 }
-            } else if (dozensOfSum <= countDozensInBank * 10 + countUnitsInBank){
-                temp = dozensOfSum + unitsOfSum - countDozensInBank * 10;
+            } else if (tensSum <= countDozensInBank * 10 + countUnitsInBank){
+                temp = tensSum + onesSum - countDozensInBank * 10;
                 if (temp <= countUnitsInBank) {
-                    System.out.println("Выдача "+ countDozensInBank 
+                    System.out.println("Выдача "+ countDozensInBank
                         + " банкнот номиналом 10 на сумму " + countDozensInBank * 10 + " и "
                         + temp + " номиналом 1 на сумму " + temp
-                        + "\nОбщая сумма выдачи: "+(hundredsOfSum + countDozensInBank * 10 + temp));
+                        + "\nОбщая сумма выдачи: "+(hundredsSum + countDozensInBank * 10 + temp));
                 } else {
                     System.out.println("Банкнот не хватает для выдачи нужной суммы");
                 }
             } else {
                 System.out.println("Банкнот не хватает для выдачи нужной суммы");
             }
-        } else if (hundredsOfSum <= countHundredsInBank * 100 + countDozensInBank * 10){
-            temp = hundredsOfSum + dozensOfSum - countHundredsInBank * 100;
+        } else if (hundredsSum <= countHundredsInBank * 100 + countDozensInBank * 10){
+            temp = hundredsSum + tensSum - countHundredsInBank * 100;
             if (temp <= countDozensInBank * 10) {
-                System.out.println("Выдача "+ countHundredsInBank 
-                    + " банкнот номиналом 100 на сумму" + countHundredsInBank * 100 + " и "
-                    + temp / 10 + " номиналом 10 на сумму" + temp + " и " + unitsOfSum 
-                    + " номиналом 1 на сумму unitsOfSum"
-                    + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100 + temp + unitsOfSum));
+                System.out.println("Выдача "+ countHundredsInBank
+                        + " банкнот номиналом 100 на сумму" + countHundredsInBank * 100 + " и "
+                        + temp / 10 + " номиналом 10 на сумму" + temp + " и " + onesSum
+                        + " номиналом 1 на сумму unitsOfSum"
+                        + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100 + temp + onesSum));
             } else if (temp <= countDozensInBank * 10 + countUnitsInBank) {
-                temp = hundredsOfSum + dozensOfSum + unitsOfSum - countHundredsInBank * 100
-                    - countDozensInBank * 10;
+                temp = hundredsSum + tensSum + onesSum - countHundredsInBank * 100
+                        - countDozensInBank * 10;
                 if (temp <= countUnitsInBank) {
-                    System.out.println("Выдача "+ countHundredsInBank 
-                        + " банкнот номиналом 100 на сумму " + countHundredsInBank * 100 + " и "
-                        + countDozensInBank + " номиналом 10 на сумму " + countDozensInBank * 10 
-                        + " и " + temp + " номиналом 1 на сумму " + temp
-                        + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100 
-                        + countDozensInBank * 10 + temp));
+                    System.out.println("Выдача "+ countHundredsInBank
+                            + " банкнот номиналом 100 на сумму " + countHundredsInBank * 100 + " и "
+                            + countDozensInBank + " номиналом 10 на сумму " + countDozensInBank * 10
+                            + " и " + temp + " номиналом 1 на сумму " + temp
+                            + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100
+                            + countDozensInBank * 10 + temp));
                 } else {
                     System.out.println("Банкнот не хватает для выдачи нужной суммы");
                 }
             }  else {
                 System.out.println("Банкнот не хватает для выдачи нужной суммы");
             }
-        } else if (hundredsOfSum <= countHundredsInBank * 100 + countDozensInBank * 10 
-            + countUnitsInBank) {
-            temp = hundredsOfSum + dozensOfSum + unitsOfSum - countHundredsInBank * 100
-                - countDozensInBank * 10;
-            System.out.println("Выдача "+ countHundredsInBank + " банкнот номиналом 100 на сумму " 
-                + countHundredsInBank * 100 + " и " + countDozensInBank 
-                + " банкнот номиналом 10 на сумму" + countDozensInBank * 10 + " и " + temp 
-                + " номиналом 1 на сумму " + temp
-                +"\nОбщая сумма выдачи: " + (countHundredsInBank * 100 
-                        + countDozensInBank * 10 + temp));
+        } else if (hundredsSum <= countHundredsInBank * 100 + countDozensInBank * 10
+                + countUnitsInBank) {
+            temp = hundredsSum + tensSum + onesSum - countHundredsInBank * 100
+                    - countDozensInBank * 10;
+            System.out.println("Выдача "+ countHundredsInBank + " банкнот номиналом 100 на сумму "
+                    + countHundredsInBank * 100 + " и " + countDozensInBank
+                    + " банкнот номиналом 10 на сумму" + countDozensInBank * 10 + " и " + temp
+                    + " номиналом 1 на сумму " + temp
+                    +"\nОбщая сумма выдачи: " + (countHundredsInBank * 100
+                    + countDozensInBank * 10 + temp));
         } else {
             System.out.println("Банкнот не хватает для выдачи нужной суммы");
         }

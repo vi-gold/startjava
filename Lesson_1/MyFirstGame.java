@@ -17,7 +17,6 @@
                 System.out.println("Нет загаданное число меньше чем " + middle);
                 max = middle - 1;
             }
-
         }
         System.out.println("Вы угадали число");
     }

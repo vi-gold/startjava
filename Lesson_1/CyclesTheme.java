@@ -3,9 +3,11 @@
     public static void main(String[] args){
         
         System.out.println("1. Подсчет суммы четных и нечетных чисел");
-        int i = -10, even = 0, odd = 0;
+        int i = -10;
+        int even = 0;
+        int odd = 0;
         do {
-            if (i % 2 == 0){
+            if (i % 2 == 0) {
                 even += i;
             } else {
                 odd += i;
@@ -16,8 +18,12 @@
                 + ", а нечетных = " + odd);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int a = 2, b = -1, c = 100;
-        int min = a, max = a, num;
+        int a = 2;
+        int b = -1;
+        int c = 100;
+        int min = a;
+        int max = a;
+        int num;
         if (b < min) {
             min = b;
         }
@@ -30,13 +36,13 @@
         if (c > max) {
             max = c;
         }
-        for (i = 0; i < 3; i++){
-            if (i == 0){
+        for (i = 0; i < 3; i++) {
+            if (i == 0) {
                 num = min;
-            } else if (i == 1){
-                if (a != max && a != min){
+            } else if (i == 1) {
+                if (a != max && a != min) {
                     num = a;
-                } else if (b != max && b != min){
+                } else if (b != max && b != min) {
                     num = b;
                 } else {
                     num = c;
@@ -62,15 +68,15 @@
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
         int countCycles = 0;
-        for (i = 1; i < 24; i += 2){
+        for (i = 1; i < 24; i += 2) {
             countCycles++;
             System.out.printf("%4d", i);
-            if (countCycles % 5 == 0){
+            if (countCycles % 5 == 0) {
                 System.out.println();
             }
         }
-        if (countCycles % 5 != 0){
-            for (i = countCycles; i % 5 != 0; i++){
+        if (countCycles % 5 != 0) {
+            for (i = countCycles; i % 5 != 0; i++) {
                 System.out.printf("%4d", 0);
             }
         }
@@ -80,7 +86,7 @@
         digit = num % 10;
         int count = 0;
         while (digit > 0) {
-            if (digit == 2){
+            if (digit == 2) {
                 count++;
             }
             num = num / 10;
@@ -93,9 +99,9 @@
         }
 
         System.out.println("\n6. Отображение фигур в консоли");
-        for (i = 1; i < 51; i++){
+        for (i = 1; i < 51; i++) {
             System.out.print("* ");
-            if (i % 10 == 0){
+            if (i % 10 == 0) {
                 System.out.println();
             }
         }
@@ -154,11 +160,12 @@
 
         System.out.println("\n9. Определение, является ли число счастливым");
         num = 167824;
-        int sum1 = 0, sum2 = 0;
+        int sum1 = 0;
+        int sum2 = 0;
         temp = num;
         while (temp != 0) {
             digit = temp % 10;
-            if (temp >= 1000){
+            if (temp >= 1000) {
                 sum2 += digit;
             } else {
                 sum1 += digit;
@@ -167,7 +174,7 @@
         }
         System.out.println("Сумма цифр " + num / 1000 + " = " + sum1);
         System.out.println("Сумма цифр " + num % 1000 + " = " + sum2);
-        if (sum1 == sum2){
+        if (sum1 == sum2) {
             System.out.println("Число " + num + " счастливое");
         } else {
             System.out.println("Число " + num + " не счастливое");

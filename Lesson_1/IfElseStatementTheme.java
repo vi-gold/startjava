@@ -125,15 +125,15 @@ public class IfElseStatementTheme {
             gradeProgramming = 5;
         }
         System.out.println("История " + gradeHistory + "\nПрограммирование " + gradeProgramming
-            + "\nСредний балл оценок: " + ((gradeProgramming + gradeHistory) / 2)
-            + "\nСредний % по предметам: " + avgPercent);
+                + "\nСредний балл оценок: " + ((gradeProgramming + gradeHistory) / 2)
+                + "\nСредний % по предметам: " + avgPercent);
 
         System.out.println("\n8. Расчет прибыли за год");
-        int rentForYear = 5000 * 12;
-        int salesForYear = 13_000 * 12;
-        int costPriceForYear = 9000 * 12;
-        int profit = salesForYear - rentForYear - costPriceForYear;
-        if (profit > 0){
+        int rentForYear = 5000;
+        int salesForYear = 13_000;
+        int costPriceForYear = 9000;
+        int profit = (salesForYear - rentForYear - costPriceForYear) * 12;
+        if (profit > 0) {
             System.out.println("Прибыль за год: +" + profit);
         } else {
             System.out.println("Прибыль за год: " + profit);
@@ -141,73 +141,28 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int sum = 567;
-        int hundredsSum = sum / 100 * 100;
-        int tensSum = sum / 10 % 10 * 10;
-        int onesSum = sum % 10;
         int countHundredsInBank = 10;
-        int countDozensInBank = 5;
-        int countUnitsInBank = 50;
-        int temp;
-        if (hundredsSum <= countHundredsInBank * 100) {
-            System.out.println("Выдача " + hundredsSum / 100
-                    + " банкнот номиналом 100 на сумму " + hundredsSum);
-            if (tensSum <= countDozensInBank) {
-                System.out.println("Выдача " + tensSum / 10
-                        + " банкнот номиналом 10 на сумму " + tensSum);
-                if (onesSum <= countUnitsInBank) {
-                    System.out.println("Выдача " + onesSum
-                        + " банкнот номиналом 1 на сумму " + onesSum
-                        + "\nОбщая сумма выдачи: " + (hundredsSum + tensSum + onesSum));
-                }
-            } else if (tensSum <= countDozensInBank * 10 + countUnitsInBank){
-                temp = tensSum + onesSum - countDozensInBank * 10;
-                if (temp <= countUnitsInBank) {
-                    System.out.println("Выдача "+ countDozensInBank
-                        + " банкнот номиналом 10 на сумму " + countDozensInBank * 10 + " и "
-                        + temp + " номиналом 1 на сумму " + temp
-                        + "\nОбщая сумма выдачи: "+(hundredsSum + countDozensInBank * 10 + temp));
-                } else {
-                    System.out.println("Банкнот не хватает для выдачи нужной суммы");
-                }
-            } else {
-                System.out.println("Банкнот не хватает для выдачи нужной суммы");
-            }
-        } else if (hundredsSum <= countHundredsInBank * 100 + countDozensInBank * 10){
-            temp = hundredsSum + tensSum - countHundredsInBank * 100;
-            if (temp <= countDozensInBank * 10) {
-                System.out.println("Выдача "+ countHundredsInBank
-                        + " банкнот номиналом 100 на сумму" + countHundredsInBank * 100 + " и "
-                        + temp / 10 + " номиналом 10 на сумму" + temp + " и " + onesSum
-                        + " номиналом 1 на сумму unitsOfSum"
-                        + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100 + temp + onesSum));
-            } else if (temp <= countDozensInBank * 10 + countUnitsInBank) {
-                temp = hundredsSum + tensSum + onesSum - countHundredsInBank * 100
-                        - countDozensInBank * 10;
-                if (temp <= countUnitsInBank) {
-                    System.out.println("Выдача "+ countHundredsInBank
-                            + " банкнот номиналом 100 на сумму " + countHundredsInBank * 100 + " и "
-                            + countDozensInBank + " номиналом 10 на сумму " + countDozensInBank * 10
-                            + " и " + temp + " номиналом 1 на сумму " + temp
-                            + "\nОбщая сумма выдачи: " + (countHundredsInBank * 100
-                            + countDozensInBank * 10 + temp));
-                } else {
-                    System.out.println("Банкнот не хватает для выдачи нужной суммы");
-                }
-            }  else {
-                System.out.println("Банкнот не хватает для выдачи нужной суммы");
-            }
-        } else if (hundredsSum <= countHundredsInBank * 100 + countDozensInBank * 10
-                + countUnitsInBank) {
-            temp = hundredsSum + tensSum + onesSum - countHundredsInBank * 100
-                    - countDozensInBank * 10;
-            System.out.println("Выдача "+ countHundredsInBank + " банкнот номиналом 100 на сумму "
-                    + countHundredsInBank * 100 + " и " + countDozensInBank
-                    + " банкнот номиналом 10 на сумму" + countDozensInBank * 10 + " и " + temp
-                    + " номиналом 1 на сумму " + temp
-                    +"\nОбщая сумма выдачи: " + (countHundredsInBank * 100
-                    + countDozensInBank * 10 + temp));
+        int countTensInBank = 5;
+        int countOnesInBank = 50;
+        int hundredsWithdrawn = sum / 100;
+        if (hundredsWithdrawn > countHundredsInBank) {
+            hundredsWithdrawn = countHundredsInBank;
+        }
+        sum -= hundredsWithdrawn * 100;
+        int tensWithdrawn = sum / 10;
+        if (tensWithdrawn > countTensInBank) {
+            tensWithdrawn = countTensInBank;
+        }
+        sum -= tensWithdrawn * 10;
+        int onesWithdrawn = sum;
+        if (onesWithdrawn > countOnesInBank) {
+            System.out.println("Банкнот не хватает для выдачи нужно суммы");
         } else {
-            System.out.println("Банкнот не хватает для выдачи нужной суммы");
+            System.out.println("Выдача " + hundredsWithdrawn + " банкнот номиналом 100\n"
+                    + "Выдача " + tensWithdrawn + " банкнот номиналом 10\n"
+                    + "Выдача " + onesWithdrawn + " банкнот номиналом 1\n"
+                    + "Общая сумма выдачи: " + (hundredsWithdrawn * 100 + tensWithdrawn * 10
+                    + onesWithdrawn));
         }
     }
 }

@@ -113,7 +113,6 @@ public class VariablesTheme {
                 + "Сумма его цифр = " + sumDigits
                 + "\nПроизведение = " + productDigits);
 
-
         System.out.println("\n9. Вывод времени");
         int seconds = 86399;
         int hours = seconds / 3600;

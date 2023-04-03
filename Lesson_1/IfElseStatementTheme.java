@@ -59,29 +59,37 @@ public class IfElseStatementTheme {
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         a = 123;
         b = 321;
+        int hundredsA = a / 100;
+        int tensA = a / 10 % 10;
+        int onesA = a % 10;
+        int hundredsB = b / 100;
+        int tensB = b / 10 % 10;
+        int onesB = b % 10;
         System.out.println("Исходные числа: a = " + a + " b = " + b);
-        if (((a / 100) != (b / 100)) && ((a / 10 % 10) != (b / 10 % 10))
-            && ((a % 10) != (b % 10))) {
-                System.out.println("Равных цифр нет");
-        } else {
-            if ((a / 100) == (b / 100)) {
-                System.out.println("Одинаковые числа " + (a / 100) + " в разряде сотен");
-            }
-            if ((a / 10 % 10) == (b / 10 % 10)) {
-                System.out.println("Одинаковые числа " + (a / 10 % 10) + " в разряде десяток");
-            } 
-            if ((a % 10) == (b % 10)) {
-                System.out.println("Одинаковые числа " + (a % 10) + " в разряде единиц");
-            }
+        boolean isNotEquals = true;
+        if (hundredsA == hundredsB) {
+            System.out.println("Одинаковые числа " + hundredsA + " в разряде сотен");
+            isNotEquals = false;
+        }
+        if (tensA == tensB) {
+            System.out.println("Одинаковые числа " + tensA + " в разряде десяток");
+            isNotEquals = false;
+        }
+        if (onesA == onesB) {
+            System.out.println("Одинаковые числа " + onesA + " в разряде единиц");
+            isNotEquals = false;
+        }
+        if (isNotEquals) {
+            System.out.println("Равных цифр нет");
         }
 
         System.out.println("\n5. Определение символа по его коду");
         char symbol = '\u0057';
-        if (symbol > 96 && symbol < 123) {
+        if (symbol >= 'a' && symbol <= 'z') {
             System.out.println("Символ '" + symbol + "' это маленькая буква");
-        } else if (symbol > 64 && symbol < 91) {
+        } else if (symbol > 'A' && symbol < 'Z') {
             System.out.println("Символ '" + symbol + "' это большая буква");
-        } else if (symbol > 47 && symbol < 58) {
+        } else if (symbol >= '0' && symbol <= '9') {
             System.out.println("Символ '" + symbol + "' это число буква");
         } else {
             System.out.println("Символ '" + symbol + "' это не буква и не число");
@@ -89,43 +97,39 @@ public class IfElseStatementTheme {
 
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int contribution = 300_000;
-        int percent = 0;
+        int percent = contribution / 100 * 10;
         System.out.println("Сумма вклада: " + contribution);
         if (contribution < 100_000) {
             percent = contribution / 100 * 5;
         } else if (contribution >= 100_000 && contribution <= 300_000) {
             percent = contribution / 100 * 7;
-        } else if (contribution > 300_000) {
-            percent = contribution / 100 * 10;
         }
-        System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: " 
+        System.out.println("Начисленный процент: " + percent + "\nИтоговая сумма: "
                 + (contribution + percent));
 
         System.out.println("\n7. Определение оценки по предметам");
-        int history = 59;
-        int programming = 91;
-        int avgPercent = (history + programming) / 2;
-        int gradeHistory = 0, gradeProgramming = 0;
-        if (history <= 60) {
+        int historyPercent = 59;
+        int gradeHistory = 5;
+        if (historyPercent <= 60) {
             gradeHistory = 2;
-        } else if (history > 60 && history <= 73) {
+        } else if (historyPercent > 60 && historyPercent <= 73) {
             gradeHistory = 3;
-        } else if (history > 73 && history <= 91) {
+        } else if (historyPercent > 73 && historyPercent <= 91) {
             gradeHistory = 4;
-        } else if (history > 91) {
-            gradeHistory = 5;
         }
-        if (programming <= 60) {
+        int programmingPercent = 91;
+        int gradeProgramming = 5;
+        if (programmingPercent <= 60) {
             gradeProgramming = 2;
-        } else if (programming > 60 && programming <= 73) {
+        } else if (programmingPercent > 60 && programmingPercent <= 73) {
             gradeProgramming = 3;
-        } else if (programming > 73 && programming <= 91) {
+        } else if (programmingPercent > 73 && programmingPercent <= 91) {
             gradeProgramming = 4;
-        } else if (programming > 91) {
-            gradeProgramming = 5;
         }
+        int avgPercent = (historyPercent + programmingPercent) / 2;
+        int avgGrade = (gradeProgramming + gradeHistory) / 2;
         System.out.println("История " + gradeHistory + "\nПрограммирование " + gradeProgramming
-                + "\nСредний балл оценок: " + ((gradeProgramming + gradeHistory) / 2)
+                + "\nСредний балл оценок: " + avgGrade
                 + "\nСредний % по предметам: " + avgPercent);
 
         System.out.println("\n8. Расчет прибыли за год");
@@ -144,20 +148,20 @@ public class IfElseStatementTheme {
         int countHundredsInBank = 10;
         int countTensInBank = 5;
         int countOnesInBank = 50;
-        int hundredsWithdrawn = sum / 100;
-        if (hundredsWithdrawn > countHundredsInBank) {
-            hundredsWithdrawn = countHundredsInBank;
-        }
-        sum -= hundredsWithdrawn * 100;
-        int tensWithdrawn = sum / 10;
-        if (tensWithdrawn > countTensInBank) {
-            tensWithdrawn = countTensInBank;
-        }
-        sum -= tensWithdrawn * 10;
-        int onesWithdrawn = sum;
-        if (onesWithdrawn > countOnesInBank) {
+        if (sum > countHundredsInBank * 100 + countTensInBank * 10 + countOnesInBank) {
             System.out.println("Банкнот не хватает для выдачи нужно суммы");
         } else {
+            int hundredsWithdrawn = sum / 100;
+            if (hundredsWithdrawn > countHundredsInBank) {
+                hundredsWithdrawn = countHundredsInBank;
+            }
+            sum -= hundredsWithdrawn * 100;
+            int tensWithdrawn = sum / 10;
+            if (tensWithdrawn > countTensInBank) {
+                tensWithdrawn = countTensInBank;
+            }
+            sum -= tensWithdrawn * 10;
+            int onesWithdrawn = sum;
             System.out.println("Выдача " + hundredsWithdrawn + " банкнот номиналом 100\n"
                     + "Выдача " + tensWithdrawn + " банкнот номиналом 10\n"
                     + "Выдача " + onesWithdrawn + " банкнот номиналом 1\n"
